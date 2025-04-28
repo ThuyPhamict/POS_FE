@@ -1,0 +1,38 @@
+/* CheckoutSuccess.css */
+
+.checkout-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f8ff; /* Light background color */
+    color: #333; /* Text color */
+    font-family: Arial, sans-serif;
+  }
+  
+  .checkout-success h1 {
+    font-size: 2.5rem;
+    color: #4CAF50; /* Green color for success */
+    margin-bottom: 20px;
+  }
+  
+  .checkout-success button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-success button:hover {
+    background-color: #45a049; /* Darker green when hovered */
+  }
+  
+  .checkout-success button:focus {
+    outline: none; /* Remove focus outline */
+  }
+  

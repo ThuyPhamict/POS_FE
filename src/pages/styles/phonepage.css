@@ -1,0 +1,71 @@
+.number-keyboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .number-button {
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .number-button:hover {
+    background-color: #d0d0d0;
+  }
+
+  .textphone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  .textphone input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    width: 500px;
+  }
+  
+  .back-space-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .back-space-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .textphone{
+    text-align: left;
+    width: 200px;
+    border-radius: solid black 2px;
+    font-size: 20px;
+  }
+  displayedPhone{
+    border-radius: solid black 2px;
+    font-size: 20px;
+  }
+  
+  .skip-button, .ok-button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .ok-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+  

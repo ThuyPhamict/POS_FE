@@ -1,0 +1,108 @@
+/* General styling for the homepage */
+.homepage {
+    font-family: Arial, sans-serif;
+    color: #181818;
+    width: 100%;
+    min-height: 100vh; /* Ensure full height of the screen */
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Center content horizontally */
+    box-sizing: border-box;
+    padding: 0px; /* Add padding to prevent elements touching the edges */
+    margin: 2px;
+    
+  }
+  
+  /* Header and logo styling */
+  .logo {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px; /* Add margin to prevent overlap with the menu */
+    display: flex;
+    justify-content: center; /* Center logo */
+    align-items: center;
+    width: 100%; /* Ensure the logo doesn't overflow */
+  }
+  
+  img {
+    width: 50%;
+    height: auto;
+    max-width: 100%; /* Ensure the image doesn't overflow its container */
+    max-height: 200px; /* Limit image height to avoid overlap */
+    margin-bottom: 20px; /* Add space below the logo */
+  }
+  
+  /* Navigation menu styling */
+  .menu {
+    background-color: #5bc5e2;
+    padding: 10px 0;
+    width: 50%;
+    left: 0px;
+    margin-bottom: 20px;
+    float: left;
+  
+  }
+  
+  .menu-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: left; /* Center menu items */
+  }
+  
+  .menu-list li {
+    margin: 0 15px;
+  }
+  
+  .menu-list li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 15px;
+  }
+  
+  .menu-list li a:hover {
+    background-color: #575757;
+    border-radius: 4px;
+  }
+  
+  
+  .cart-icon img {
+    width: 40px;
+  }
+  
+  .order-details {
+    font-size: 16px;
+  }
+  
+  .order-details p {
+    margin: 5px 0;
+  }
+  
+  
+  /* Responsive design for small screens */
+  @media (max-width: 768px) {
+    .logo {
+        flex-direction: column; /* Stack logo vertically on small screens */
+        align-items: center; /* Center logo horizontally */
+        margin-bottom: 15px; /* Adjust space below logo */
+    }
+  
+    .menu {
+        width: 80%; /* Make the menu wider on smaller screens */
+        margin-bottom: 20px;
+    }
+  
+    .menu-list {
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: center;
+    }
+  
+    .menu-list li {
+        margin: 10px 0;
+    }
+  
+  
+  }
+  

@@ -1,0 +1,124 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .order-view {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Staff Dropdown */
+  .staff-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .staff-dropdown label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .staff-dropdown select {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  /* Menu Products */
+  .menu-products ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .menu-products li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  /* Customer Information */
+  .customer-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  
+  /* Order ID */
+  .order-id p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Cart View */
+  .cart-view {
+    margin-bottom: 20px;
+  }
+  
+  .cart-view ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .cart-view li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  
+  .cart-view p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Checkout Button */
+  .checkout-btn {
+    text-align: center;
+  }
+  
+  .checkout-btn button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-btn button:hover {
+    background-color: #45a049;
+  }
+  
