@@ -10,24 +10,14 @@ const EnterCustomerNamePage = () => {
   const location = useLocation();
 
   const data = location.state;
-  console.log(data);
   // const phone = location.state?.phone;
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
-  // useEffect(() => {
-  //   if (!phone) {
-  //     alert("Phone number is missing. Please try again.");
-  //     navigate("/enter-customer-phone"); 
-  //   }
-  // }, [phone, navigate]);
-
-
   const handleSave = async () => {
     try {
-      console.log(data.phone);
     // const orderRes = await axios.post(`http://localhost:3000/api/newcustomers`, {
       const orderRes = await axios.post(`https://pos-be-pham-5c635ce0026f.herokuapp.com/api/newcustomers`, {
           name,

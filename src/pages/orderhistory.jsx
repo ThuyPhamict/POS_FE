@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styles/orderHistory.css'; 
 import Logo from './images/logo.jpg';
@@ -6,35 +7,39 @@ import Logo from './images/logo.jpg';
 
 
 const OrderHistory = () => {
-    const [orderData, setOrderData] = useState({
-      orderId: 100, // Default Order ID
-      customerName: 'Unknown', // Default customer name
-      staff: '', // Empty staff field
-      service: '' // Empty service field
-    });
+    const [orderHistory, setOrderHistory] = useState([]);
+    const navigate = useNavigate();
 
 
     const fetchOrderData = async () => {
-        try {
-          const response = await axios.get('/api/order'); // Replace with your API endpoint
-          const data = response.data;
-    
-          // Update state with data, using defaults for missing fields
-          setOrderData({
-            orderId: data.orderId || 100, // Default to 100 if no orderId
-            customerName: data.customerName || 'Unknown', // Default to 'Unknown' if no customerName
-            staff: data.staff || '', // Empty if no staff
-            service: data.service || '' // Empty if no service
-          });
-        } catch (error) {
-          console.error('Error fetching order data:', error);
-          // In case of an error, we retain the default values
+        try{
+          const orderHistoryResult = await axios.get('https://pos-be-pham-5c635ce0026f.herokuapp.com/api/orderhistoryview');
+
+          setOrderHistory(orderHistoryResult.data);
+          
+        }catch (err) {
+          console.error('Failed to fetch orders:', err);
+          alert("Session expired or unauthorized. Please log in again.");
         }
-      };
+    };
 
       useEffect(() => {
         fetchOrderData();
       }, []);
+
+      const viewCardHandle = (order) =>{
+    
+        navigate("/view-orderhistory", {
+          state: {
+            order,
+            name: order.customer_name,
+            phone: order.phone,
+           
+          }
+       })
+         
+      };
+
 
 
       return(
@@ -58,11 +63,19 @@ const OrderHistory = () => {
     
          
             <div className="order-details">
-              <p>Order ID: {orderData.orderId}</p>
-              <p>Customer: {orderData.customerName}</p>
-              <p>Staff: {orderData.staff || 'Not Assigned'}</p>
-              <p>Service: {orderData.service || 'No Service Selected'}</p>
-              <button className="void-order-button">Void Order</button>
+                {orderHistory.length === 0 ? (
+                <p>No active orders.</p>
+              ) : (
+                orderHistory.map((order) => (
+                  
+                  <div key={order.id} className="order-box">
+                    <p>Order ID: {order.id}</p>
+                    <p>Customer: {order.customer_name}</p>
+                    <button className="view-card-button" onClick={()=>viewCardHandle(order)}>View Order</button>
+                </div>
+                ))
+              )}
+        
             </div>
     
         </div>

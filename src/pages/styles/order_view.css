@@ -1,124 +1,170 @@
-/* General styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
+.order-view {
+  font-family: Arial, sans-serif;
+  padding: 1px;
+  display: grid;
+  grid-template-rows: auto auto 3fr;
+  gap: 1px;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Row 1: Header */
+.header {
+  grid-row: 1;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 1px;
+  border-radius: 8px;
+}
+
+/* Row 2 container */
+.row-2 {
+  display: flex;
+  gap: 10px;
+  background-color: #f9f9f9;
+  padding: 1px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.staff {
+  flex: 1;
+}
+
+.staff select {
+  width: 50%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.orderinfor {
+  flex: 2;
+}
+
+.orderinfor h3 {
+  margin-bottom: 5px;
+}
+
+.orderinfor p {
+  margin: 4px 0;
+ 
+}
+
+/* Row 3: Menu and Cart */
+.row-3 {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.menuitem,
+.cart {
+  flex: 1;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  overflow-y: auto; 
+  height: 100%; 
+}
+
+.menuitem h3 {
+  margin-bottom: 10px;
+}
+
+.menu_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menu-box button {
+  padding: 10px 15px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 250px;
+  height: 80px;
+}
+
+.menu-box button:hover {
+  background-color: #005f7a;
+}
+
+/* Cart Section */
+.cart {
+  flex: 1;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cart h3 {
+  margin-bottom: 10px;
+}
+
+
+.cart ul {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding:0;
+  margin-bottom: 10px;
+}
+
+.checkout-session {
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  padding-top: 10px;
+  display: flex;
+  gap: 30%;
+  flex-wrap: wrap;
+  border-top: 1px solid #eee;
+  padding-bottom: 10px;
   
-  body {
-    background-color: #f4f4f4;
-    padding: 20px;
+}
+
+.checkout-btn button,
+.backButton button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+  font-size: 14px;
+}
+
+.checkout-btn button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.backButton button:hover, 
+.checkout-btn button:hover{
+  background-color: #1e7e34;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row-2,
+  .row-3 {
+    flex-direction: column;
   }
-  
-  .order-view {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Staff Dropdown */
-  .staff-dropdown {
-    margin-bottom: 20px;
-  }
-  
-  .staff-dropdown label {
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  .staff-dropdown select {
-    padding: 8px;
-    font-size: 16px;
+
+  .menu-box button,
+  .checkout-btn button,
+  .backButton button {
     width: 100%;
-    max-width: 200px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
   }
-  
-  /* Menu Products */
-  .menu-products ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .menu-products li {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 8px;
-  }
-  
-  /* Customer Information */
-  .customer-info p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 6px;
-  }
-  
-  /* Order ID */
-  .order-id p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  /* Cart View */
-  .cart-view {
-    margin-bottom: 20px;
-  }
-  
-  .cart-view ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .cart-view li {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 6px;
-  }
-  
-  .cart-view p {
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  /* Checkout Button */
-  .checkout-btn {
-    text-align: center;
-  }
-  
-  .checkout-btn button {
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .checkout-btn button:hover {
-    background-color: #45a049;
-  }
-  
+}

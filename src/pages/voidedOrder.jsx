@@ -5,30 +5,18 @@ import Logo from './images/logo.jpg';
 
 
 
-const OrderHistory = () => {
-    const [orderData, setOrderData] = useState({
-      orderId: 100, // Default Order ID
-      customerName: 'Unknown', // Default customer name
-      staff: '', // Empty staff field
-      service: '' // Empty service field
-    });
+const VoidedOrder = () => {
+    const [voidedOrder, setVoidedOrder] = useState([]);
 
     const fetchOrderData = async () => {
-        try {
-          const response = await axios.get('/api/order'); // Replace with your API endpoint
-          const data = response.data;
-    
-          // Update state with data, using defaults for missing fields
-          setOrderData({
-            orderId: data.orderId || 100, // Default to 100 if no orderId
-            customerName: data.customerName || 'Unknown', // Default to 'Unknown' if no customerName
-            staff: data.staff || '', // Empty if no staff
-            service: data.service || '' // Empty if no service
-          });
-        } catch (error) {
-          console.error('Error fetching order data:', error);
-          // In case of an error, we retain the default values
-        }
+      try{
+        const orderHistoryResult = await axios.get('https://pos-be-pham-5c635ce0026f.herokuapp.com/api/voidedorderview');
+        setVoidedOrder(orderHistoryResult.data);
+
+      }catch (err) {
+        console.error('Failed to fetch orders:', err);
+        alert("Session expired or unauthorized. Please log in again.");
+      }
       };
 
       useEffect(() => {
@@ -36,8 +24,9 @@ const OrderHistory = () => {
       }, []);
 
 
+
       return(
-        <div className="homepage">
+        <div className="voided-order">
        
             <div className="logo">
             <img 
@@ -57,10 +46,17 @@ const OrderHistory = () => {
     
          
             <div className="order-details">
-              <p>Order ID: {orderData.orderId}</p>
-              <p>Customer: {orderData.customerName}</p>
-              <p>Staff: {orderData.staff || 'Not Assigned'}</p>
-              <p>Service: {orderData.service || 'No Service Selected'}</p>
+                {voidedOrder.length === 0 ? (
+                <p>No active orders.</p>
+              ) : (
+                voidedOrder.map((order) => (
+                  
+                  <div key={order.id} className="order-box">
+                    <p>Order ID: {order.id}</p>
+                    <p>Customer: {order.customer_name}</p>
+                  </div>
+                ))
+              )}
             </div>
     
         </div>
@@ -69,4 +65,4 @@ const OrderHistory = () => {
     
     }
     
-    export default OrderHistory;
+    export default VoidedOrder;

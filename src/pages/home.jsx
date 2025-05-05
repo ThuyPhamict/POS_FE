@@ -27,7 +27,7 @@ const HomePage = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(response.data); 
+
       setOrders(response.data);
       
     }catch (err) {
@@ -44,10 +44,24 @@ const HomePage = () => {
     fetchOrderData();
   }, []);
 
+  
+
   if (loading) {
     return <p>Loading orders...</p>;
   }
   
+  const groupCartItems = (items) => {
+    const grouped = {};
+    items.forEach(item => {
+      const name = item.product_name; // use correct field name
+      if (grouped[name]) {
+        grouped[name].quantity += item.quantity;
+      } else {
+        grouped[name] = { ...item };
+      }
+    });
+    return Object.values(grouped);
+  };
 
   // Function to create a new order and increase the Order ID
   const createNewOrder = () => {
@@ -58,6 +72,20 @@ const HomePage = () => {
     localStorage.setItem('newOrderId', newOrderId);
     navigate('/enter-customer-phone');
   };
+
+  // handle viewcart when click to "View cart button", displayed all orders to order-view
+  const viewCardHandle = (order) =>{
+    
+    navigate("/order-view", {
+      state: {
+        order,
+        name: order.customer_name,
+        phone: order.phone
+      }
+   })
+     
+  };
+
 
 
   return(
@@ -86,12 +114,23 @@ const HomePage = () => {
           ) : (
             orders.map((order) => (
               
-              <div key={order.id} className="order-box">
+              <div key={order.order_id} className="order-box">
                 <p>Order ID: {order.id}</p>
                 <p>Customer: {order.customer_name}</p>
                 <p>Staff: {order.staff_name || 'Not Assigned'}</p>
-                <p>Service: {order.service || 'No Service Selected'}</p>
-                <button className="view-cart-button">View Cart</button>
+                <p>Services:</p>
+                    {order.items && order.items.length > 0 ? (
+                      <ul>
+                        {groupCartItems(order.items).map((item, index) => (
+                          <li key={index}>
+                            {item.product_name} x {item.quantity}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No services selected</p>
+                    )}
+                <button className="view-card-button" onClick={()=>viewCardHandle(order)}>View Cart</button>
               </div>
             ))
           )}
